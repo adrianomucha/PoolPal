@@ -1,0 +1,287 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  .dashboard {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 1px 0 3px rgba(0,0,0,0.1);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+  
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #5d5fef;
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .nav-item:hover, .nav-item.active {
+    background-color: #f3f4f6;
+  }
+  
+  .nav-item.active {
+    background-color: #5d5fef;
+    color: #D2F801;
+    font-style: bold;
+  }
+  
+  .nav-icon {
+    margin-right: 10px;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f9fafb;
+    overflow-y: auto;
+  }
+  
+  .dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .add-residents-btn {
+    background-color: #5A45FE;
+    color: #D2F801;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .search-filter {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .search-input {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    width: 240px;
+  }
+  
+  .filter-btn, .view-btn {
+    padding: 8px 12px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .view-options {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .table-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  th {
+    color: #6b7280;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-name {
+    font-weight: 500;
+  }
+  
+  .user-handle {
+    color: #6b7280;
+    margin-left: 4px;
+  }
+  
+  .status {
+    padding: 2px 8px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .status-tomorrow { background-color: #d1fae5; color: #065f46; }
+  .status-next-month { background-color: #e0e7ff; color: #3730a3; }
+  
+  .more-options {
+    color: #6b7280;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* Table Animation Styles*/
+
+.add-residents-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .add-residents-page .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+  
+  .add-residents-page .logo-icon {
+    width: 32px;
+    height: 32px;
+    background-color: #5A45FE;
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+  
+  .add-residents-page h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .add-residents-page form {
+    margin-top: 20px;
+  }
+  
+  .add-residents-page label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .add-residents-page input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+  }
+  
+  .file-upload {
+    display: flex;
+    align-items: center;
+    border: 2px dashed #d1d5db;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+  
+  .file-icon {
+    font-size: 24px;
+    margin-right: 15px;
+  }
+  
+  .continue-btn {
+    background-color: #5A45FE;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #5A45FE;
+    text-decoration: none;
+  }
+  /* Add these styles to your existing Dashboard.css */
+
+tbody tr {
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox, .more-options {
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover .checkbox {
+    border-color: #6366f1;
+}
+
+tbody tr:hover .more-options {
+    color: #4b5563;
+}
+
+.status {
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover .status {
+    transform: scale(1.05);
+}
