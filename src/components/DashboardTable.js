@@ -1,23 +1,60 @@
-import React from 'react';
-import '../styles/Dashboard.css'; // Make sure this path is correct
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Loader2 } from 'lucide-react'; // Import Loader icon from lucide-react
 
 const DashboardTable = () => {
-  // Sample data - in a real application, this would likely come from props or a data fetching hook
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
+
+  // Sample resident data - in a real app, this might come from props or a data fetching hook
   const residents = [
     { id: 1, name: 'Jane Doe', handle: '@janedoe', building: 'Google', apartment: '1076', contact: 'xyz@gmail.com', status: 'Tomorrow' },
     { id: 2, name: 'Tom Myspace', handle: '@tom', building: 'Meta', apartment: '1077', contact: 'xyz@gmail.com', status: 'Next month' },
-    { id: 3, name: 'Theodor Lang', handle: '@tlang', building: 'Figma', apartment: '1078', contact: 'xyz@gmail.com', status: 'In 30 minutes' },
-    { id: 4, name: 'Lance Morey', handle: '@mor', building: 'Evergreen', apartment: '1079', contact: 'xyz@gmail.com', status: 'In 5 days' },
-    { id: 5, name: 'Emmy Woods', handle: '@emmy', building: 'Discord', apartment: '1080', contact: 'xyz@gmail.com', status: 'None' },
+    // ... more residents
   ];
 
-  const getStatusClass = (status) => {
-    const statusLower = status.toLowerCase().replace(' ', '-');
-    return `status status-${statusLower}`;
+  const sendToSpreadsheet = async () => {
+    setIsLoading(true);
+    setMessage('');
+    const url = 'https://script.google.com/macros/s/AKfycbz_DdO8JBymTUbDc_loXBOeXIQSSQm9NMHacVa8ewv-M85k-KZ_kKvu6qrlTMSKpck/exec';
+    
+    try {
+      const response = await axios.post(url, {
+        data: residents.map(resident => ({
+          name: resident.name,
+          building: resident.building,
+          apartment: resident.apartment,
+          contact: resident.contact,
+          status: resident.status
+        }))
+      }, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
+      
+      setMessage('Data sent successfully!');
+      console.log('Response:', response.data);
+    } catch (error) {
+      setMessage('Error sending data. Please try again.');
+      console.error('Error:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div className="table-container">
+      <div className="table-actions">
+        <button 
+          onClick={sendToSpreadsheet} 
+          disabled={isLoading}
+          className="send-to-spreadsheet-btn"
+        >
+          {isLoading ? <Loader2 className="animate-spin" /> : 'Send to Spreadsheet'}
+        </button>
+        {message && <span className="message">{message}</span>}
+      </div>
       <table>
         <thead>
           <tr>
@@ -46,7 +83,7 @@ const DashboardTable = () => {
               <td>{resident.building}</td>
               <td>{resident.apartment}</td>
               <td>{resident.contact}</td>
-              <td><span className={getStatusClass(resident.status)}>{resident.status}</span></td>
+              <td><span className={`status status-${resident.status.toLowerCase().replace(' ', '-')}`}>{resident.status}</span></td>
               <td><span className="more-options">...</span></td>
             </tr>
           ))}
